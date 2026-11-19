@@ -35,6 +35,14 @@ Save output:
 python -m app.ingestion.cli path\to\file.xlsx --output ingestion-result.json
 ```
 
+## Automated tests
+
+```powershell
+pytest -v
+```
+
+GitHub Actions also runs these tests on backend changes and pull requests.
+
 ## Output
 
 Every parser emits the same `EvidenceRecord` schema. Format-specific location and metadata are preserved:
