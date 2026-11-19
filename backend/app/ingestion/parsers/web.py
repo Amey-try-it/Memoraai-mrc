@@ -28,7 +28,7 @@ class HTMLParser(BaseParser):
         for element in elements:
             if element.name in {"h1", "h2", "h3", "h4", "h5", "h6"}:
                 if section_parts:
-                    records.append(self._record(path, document_id, current_heading, "\\n".join(section_parts)))
+                    records.append(self._record(path, document_id, current_heading, "\n".join(section_parts)))
                     section_parts = []
                 current_heading = element.get_text(" ", strip=True) or "Untitled section"
             elif element.name == "table":
@@ -38,17 +38,17 @@ class HTMLParser(BaseParser):
                     if cells:
                         rows.append(" | ".join(cells))
                 if rows:
-                    section_parts.append("\\n".join(rows))
+                    section_parts.append("\n".join(rows))
             else:
                 text = element.get_text(" ", strip=True)
                 if text:
                     section_parts.append(text)
 
         if section_parts:
-            records.append(self._record(path, document_id, current_heading, "\\n".join(section_parts)))
+            records.append(self._record(path, document_id, current_heading, "\n".join(section_parts)))
 
         if not records:
-            text = soup.get_text("\\n", strip=True)
+            text = soup.get_text("\n", strip=True)
             if text:
                 records.append(self._record(path, document_id, title, text))
         return records
