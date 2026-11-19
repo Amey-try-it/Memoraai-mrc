@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pydantic
+pypdf
+python-docx
+python-pptx
+beautifulsoup4
+pandas
+openpyxl
+charset-normalizer
